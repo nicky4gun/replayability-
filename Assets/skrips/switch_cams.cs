@@ -1,31 +1,30 @@
 using UnityEngine;
-
-public class CameraSwitcher : MonoBehaviour
+using System.Collections;
+public class CameraMover : MonoBehaviour
 {
-    public Camera[] cameras;
-    private int currentCameraIndex = 0;
-
-    void Start()
-    {
-        // Disable all cameras except the first one
-        for (int i = 0; i < cameras.Length; i++)
-        {
-            cameras[i].gameObject.SetActive(i == 0);
-        }
-    }
+    public Transform[] cameraPositions; // Assign your camera points in the Inspector
+    private int currentPosIndex = 0;
+    public float moveSpeed = 2f;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("CameraTrigger"))
         {
-            // Find the next camera and activate it
-            cameras[currentCameraIndex].gameObject.SetActive(false);
-            currentCameraIndex++;
-
-            if (currentCameraIndex < cameras.Length)
+            if (currentPosIndex < cameraPositions.Length - 1)
             {
-                cameras[currentCameraIndex].gameObject.SetActive(true);
+                currentPosIndex++;
+                StartCoroutine(MoveCamera(cameraPositions[currentPosIndex].position));
             }
         }
+    }
+
+    IEnumerator MoveCamera(Vector3 targetPosition)
+    {
+        while (Vector3.Distance(transform.position, targetPosition) > 0.1f)
+        {
+            transform.position = Vector3.Lerp(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+            yield return null;
+        }
+        transform.position = targetPosition;
     }
 }
