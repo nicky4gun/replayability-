@@ -1,30 +1,30 @@
 using UnityEngine;
-using System.Collections;
+
 public class CameraMover : MonoBehaviour
 {
-    public Transform[] cameraPositions; // Assign your camera points in the Inspector
-    private int currentPosIndex = 0;
-    public float moveSpeed = 2f;
+    // List of camera points set in the inspector.
+    public Transform[] cameraPoints;
+    // Index of the current camera point.
+    private int currentPointIndex = 0;
+    // Smooth transition speed.
+    public float smoothSpeed = 0.125f;
+    // Optional offset from the target point.
+    public Vector3 offset;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void Update()
     {
-        if (collision.CompareTag("CameraTrigger"))
-        {
-            if (currentPosIndex < cameraPositions.Length - 1)
-            {
-                currentPosIndex++;
-                StartCoroutine(MoveCamera(cameraPositions[currentPosIndex].position));
-            }
-        }
+        // Calculate the desired position and move smoothly.
+        Vector3 desiredPosition = cameraPoints[currentPointIndex].position + offset;
+        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+        transform.position = smoothedPosition;
     }
 
-    IEnumerator MoveCamera(Vector3 targetPosition)
+    // Call this method to move to the next camera point.
+    public void MoveToNextPoint()
     {
-        while (Vector3.Distance(transform.position, targetPosition) > 0.1f)
+        if (currentPointIndex < cameraPoints.Length - 1)
         {
-            transform.position = Vector3.Lerp(transform.position, targetPosition, moveSpeed * Time.deltaTime);
-            yield return null;
+            currentPointIndex++;
         }
-        transform.position = targetPosition;
     }
 }
