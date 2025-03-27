@@ -24,7 +24,7 @@ public class PlayerDash : MonoBehaviour
     void Update()
     {
         // Check for dash input only if dash is available
-        if ((Input.GetKeyDown(KeyCode.UpArrow) && canDash))
+        if ((Input.GetKeyDown(KeyCode.Space) && canDash)) 
         {
             // Read input axes to determine dash direction
             dashDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;

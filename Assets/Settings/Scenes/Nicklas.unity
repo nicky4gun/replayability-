@@ -1058,8 +1058,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 685f251befefcf940ae053e65e1fbec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashSpeed: 20
-  dashDuration: 0.2
+  dashSpeed: 10
+  dashDuration: 0.4
 --- !u!1 &1644211016
 GameObject:
   m_ObjectHideFlags: 0
