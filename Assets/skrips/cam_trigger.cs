@@ -2,16 +2,44 @@ using UnityEngine;
 
 public class CameraTrigger : MonoBehaviour
 {
-    // Reference to the CameraMover script.
     public CameraMover camMover;
+    [SerializeField] private bool isReversed = false; // Inspector toggle
 
-    // Detect trigger events
-    void OnTriggerExit2D(Collider2D other)
+    private Vector2 lastPlayerPosition; // Stores last known player position
+
+    void OnTriggerEnter2D(Collider2D other)
     {
-        // Check if the exiting object is the player
         if (other.CompareTag("Player"))
         {
-            camMover.MoveToNextPoint();
+            Transform player = other.transform;
+            Vector2 playerDirection = (Vector2)player.position - lastPlayerPosition;
+
+            if (!isReversed)
+            {
+                // Default Mode: Left/Up = Forward, Right/Down = Backward
+                if (playerDirection.x < 0 || playerDirection.y > 0)
+                {
+                    camMover.MoveToNextPoint();
+                }
+                else if (playerDirection.x > 0 || playerDirection.y < 0)
+                {
+                    camMover.MoveBackOnePoint();
+                }
+            }
+            else
+            {
+                // Reversed Mode: Right/Down = Forward, Left/Up = Backward
+                if (playerDirection.x > 0 || playerDirection.y < 0)
+                {
+                    camMover.MoveToNextPoint();
+                }
+                else if (playerDirection.x < 0 || playerDirection.y > 0)
+                {
+                    camMover.MoveBackOnePoint();
+                }
+            }
+
+            lastPlayerPosition = player.position; // Update last known position
         }
     }
 }

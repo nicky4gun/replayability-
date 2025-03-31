@@ -2,29 +2,33 @@ using UnityEngine;
 
 public class CameraMover : MonoBehaviour
 {
-    // List of camera points set in the inspector.
-    public Transform[] cameraPoints;
-    // Index of the current camera point.
-    private int currentPointIndex = 0;
-    // Smooth transition speed.
-    public float smoothSpeed = 0.125f;
-    // Optional offset from the target point.
-    public Vector3 offset;
+    public Transform[] cameraPoints; // List of predefined camera positions
+    private int currentPointIndex = 0; // Tracks the current camera position index
+    public float smoothSpeed = 0.125f; // Speed of camera movement
+    public Vector3 offset; // Optional camera offset
 
     void Update()
     {
-        // Calculate the desired position and move smoothly.
-        Vector3 desiredPosition = cameraPoints[currentPointIndex].position + offset;
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-        transform.position = smoothedPosition;
+        // Smoothly move the camera to the target position
+        Vector3 targetPosition = cameraPoints[currentPointIndex].position + offset;
+        transform.position = Vector3.Lerp(transform.position, targetPosition, smoothSpeed);
     }
 
-    // Call this method to move to the next camera point.
+    // Move forward to the next camera point
     public void MoveToNextPoint()
     {
         if (currentPointIndex < cameraPoints.Length - 1)
         {
             currentPointIndex++;
+        }
+    }
+
+    // Move back to the previous camera point
+    public void MoveBackOnePoint()
+    {
+        if (currentPointIndex > 0)
+        {
+            currentPointIndex--;
         }
     }
 }
