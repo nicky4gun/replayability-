@@ -1,8 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Timer : MonoBehaviour
 {
+    public TextMeshProUGUI timer;
     public Text scoreText;
     public int score;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -15,6 +17,6 @@ public class Timer : MonoBehaviour
     void Update()
     {
         score = (int)Time.time;
-        scoreText.text = score.ToString();
+        timer.text = score.ToString();
     }
 }
