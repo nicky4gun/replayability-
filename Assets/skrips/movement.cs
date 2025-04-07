@@ -9,6 +9,9 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 12f;
     private Rigidbody2D rb;
     private bool isGrounded;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private Vector2 groundCheckBoxSize = new Vector2(0.75f, 0.15f);
+    [SerializeField] private LayerMask groundlayer;
 
     void Start()
     {
@@ -17,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        isGrounded = Physics2D.OverlapBox(groundCheck.position, groundCheckBoxSize, 0, groundlayer);
         // Move left and right
         float moveInput = Input.GetAxis("Horizontal");
         rb.linearVelocity = new Vector2(moveInput * speed, rb.linearVelocity.y);
@@ -28,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
     }
-
+    /*
     void OnCollisionEnter2D(Collision2D collision)
     {
         // Check if we are touching the ground
@@ -46,4 +50,5 @@ public class PlayerMovement : MonoBehaviour
             isGrounded = false;
         }
     }
+    */
 }
