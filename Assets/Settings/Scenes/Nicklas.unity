@@ -1518,6 +1518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnPoint: {fileID: 507616893}
+  camMover: {fileID: 1236038128}
 --- !u!1 &1644211016
 GameObject:
   m_ObjectHideFlags: 0
