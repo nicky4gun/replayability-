@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    public Vector2 moveDirection = Vector2.right; // Moves to the right
+    public Vector2 moveDirection = Vector2.right;
     public float moveSpeed = 3f;
 
     private Rigidbody2D rb;
@@ -11,17 +11,31 @@ public class MovingPlatform : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.gravityScale = 0; // No gravity effect
-        rb.linearVelocity = Vector2.zero; // Start stationary
+        rb.gravityScale = 0;
+        rb.linearVelocity = Vector2.zero;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!isMoving && collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            // Start moving when the player lands on the platform
-            isMoving = true;
-            rb.linearVelocity = moveDirection.normalized * moveSpeed;
+            if (!isMoving)
+            {
+                isMoving = true;
+                rb.linearVelocity = moveDirection.normalized * moveSpeed;
+            }
+
+            // Set the player as a child of the platform
+            collision.transform.SetParent(transform);
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // Unparent the player when they leave the platform
+            collision.transform.SetParent(null);
         }
     }
 }
