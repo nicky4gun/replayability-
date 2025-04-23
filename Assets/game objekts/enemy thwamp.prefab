@@ -117,7 +117,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 5
 --- !u!61 &487865039646534820
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -177,8 +177,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropSpeed: 10
-  riseSpeed: 5
+  riseSpeed: 4
   waitTime: 3
+  killVelocityThreshold: 5
 --- !u!1 &1184809425272423619
 GameObject:
   m_ObjectHideFlags: 0
