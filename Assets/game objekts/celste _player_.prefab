@@ -186,7 +186,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 250031512900193646}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 685f251befefcf940ae053e65e1fbec4, type: 3}
   m_Name: 
@@ -207,6 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   respawnPoint: {fileID: 0}
   camMover: {fileID: 0}
+  respawnCameraIndex: 0
 --- !u!114 &2254395152940180309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,7 +237,7 @@ MonoBehaviour:
   wallCheck: {fileID: 5194833336585500892}
   wallLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 128
   wallCheckRadius: {x: 0.2, y: 1.6}
   wallJumpingPower: {x: 4, y: 8}
   isDashing: 0
@@ -387,8 +388,8 @@ Transform:
   m_GameObject: {fileID: 7810139441041108802}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.404, y: -0.037, z: 0}
-  m_LocalScale: {x: 0.34457475, y: 1.075654, z: 1}
+  m_LocalPosition: {x: -0.0471, y: 0.018, z: 0}
+  m_LocalScale: {x: 1.2451845, y: 1.1853707, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4510300320004907834}
