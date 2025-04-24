@@ -1,12 +1,12 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+using TMPro;
 
 public class DeathCounter : MonoBehaviour
 {
     public static DeathCounter Instance;
     public int deathCount = 0;
-    public Text deathText; // Assign in the inspector if you want UI
+    public TMP_Text deathText; // Assign in the inspector if you want UI
 
     void Awake()
     {

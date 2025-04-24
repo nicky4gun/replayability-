@@ -22,7 +22,7 @@ public class PlayerRespawn : MonoBehaviour
     {
         // Move player to the respawn point
         transform.position = respawnPoint != null ? respawnPoint.position : defaultRespawn;
-
+        DeathCounter.Instance.AddDeath();
         // Reset velocity
         if (rb != null)
             rb.linearVelocity = Vector2.zero;
