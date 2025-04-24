@@ -13,9 +13,21 @@ public class CameraTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Debug.Log("Player triggered collider");
+            bool movingForward = other.transform.localScale.x > 0;
+
+            if (movingForward)
+            {
+                camMover.MoveToPoint(forwardIndex);
+            }
+            else
+            {
+                camMover.MoveToPoint(backwardIndex);
+            }
+
+            /*
             Transform player = other.transform;
             Vector2 playerDirection = (Vector2)player.position - lastPlayerPosition;
-
             bool movingForward = !isReversed
                 ? (playerDirection.x < 0 || playerDirection.y > 0)
                 : (playerDirection.x > 0 || playerDirection.y < 0);
@@ -23,7 +35,6 @@ public class CameraTrigger : MonoBehaviour
             bool movingBackward = !isReversed
                 ? (playerDirection.x > 0 || playerDirection.y < 0)
                 : (playerDirection.x < 0 || playerDirection.y > 0);
-
             if (movingForward)
             {
                 camMover.MoveToPoint(forwardIndex);
@@ -32,8 +43,10 @@ public class CameraTrigger : MonoBehaviour
             {
                 camMover.MoveToPoint(backwardIndex);
             }
-
+            
             lastPlayerPosition = player.position;
+            */
+
         }
     }
 
