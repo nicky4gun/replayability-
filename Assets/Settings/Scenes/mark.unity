@@ -1319,19 +1319,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 913049071701153102, guid: fd8eddc6a9c263b4c8e38cf278da8a66, type: 3}
       propertyPath: m_LocalScale.x
-      value: 19.599365
+      value: 21.763134
       objectReference: {fileID: 0}
     - target: {fileID: 913049071701153102, guid: fd8eddc6a9c263b4c8e38cf278da8a66, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.0203391
+      value: 0.8098431
       objectReference: {fileID: 0}
     - target: {fileID: 913049071701153102, guid: fd8eddc6a9c263b4c8e38cf278da8a66, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.92
+      value: 0.1623
       objectReference: {fileID: 0}
     - target: {fileID: 913049071701153102, guid: fd8eddc6a9c263b4c8e38cf278da8a66, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.44
+      value: -6.2903
       objectReference: {fileID: 0}
     - target: {fileID: 913049071701153102, guid: fd8eddc6a9c263b4c8e38cf278da8a66, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3025,6 +3025,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: celste _player_
       objectReference: {fileID: 0}
+    - target: {fileID: 2254395152940180309, guid: 5863b553d64e7424a870e3b6063181bb, type: 3}
+      propertyPath: wallLayer.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4510300320004907834, guid: 5863b553d64e7424a870e3b6063181bb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.4132
@@ -3073,6 +3077,10 @@ PrefabInstance:
       propertyPath: respawnPoint
       value: 
       objectReference: {fileID: 115845907}
+    - target: {fileID: 6271394232775126272, guid: 5863b553d64e7424a870e3b6063181bb, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
