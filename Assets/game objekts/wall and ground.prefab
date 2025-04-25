@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6912211189007947048}
   - component: {fileID: 1372727004727057629}
+  - component: {fileID: 628764375819693215}
   m_Layer: 3
   m_Name: wall and ground
   m_TagString: Untagged
@@ -87,6 +88,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &628764375819693215
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023735910807722863}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &9126704941871471331
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,9 +160,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9126704941871471331}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.7166577, w: 0.6974251}
+  m_LocalRotation: {x: 0, y: 0, z: -0.716655, w: 0.69742787}
   m_LocalPosition: {x: 41.07, y: 9.87, z: 0.17632104}
-  m_LocalScale: {x: 3.1664097, y: 0.65314, z: 0.94342995}
+  m_LocalScale: {x: 3.1664102, y: 0.6531399, z: 0.94342995}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6912211189007947048}
