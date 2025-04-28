@@ -1,6 +1,5 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement;
 
 public class DeathCounter : MonoBehaviour
 {
@@ -21,51 +20,28 @@ public class DeathCounter : MonoBehaviour
         }
     }
 
-    void OnEnable()
+    void Update()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
+        // If deathText is missing, try to find it again
         if (deathText == null)
         {
-            // Try to find the new TextMeshProUGUI by Tag
-            GameObject deathTextObj = GameObject.FindWithTag("DeathText");
-
-            if (deathTextObj != null)
+            GameObject foundText = GameObject.Find("DeathText"); // <-- your UI object name!
+            if (foundText != null)
             {
-                deathText = deathTextObj.GetComponent<TMP_Text>();
+                deathText = foundText.GetComponent<TMP_Text>();
+                UpdateUI();
             }
-        }
-
-        // Update the UI immediately after reloading
-        if (deathText != null)
-        {
-            deathText.text = "Deaths: " + deathCount.ToString();
         }
     }
 
     public void AddDeath()
     {
         deathCount++;
-        Debug.Log("Deaths: " + deathCount);
-
-        if (deathText != null)
-        {
-            deathText.text = "Deaths: " + deathCount.ToString();
-        }
+        UpdateUI();
     }
 
-    public void ResetDeaths()
+    private void UpdateUI()
     {
-        deathCount = 0;
-
         if (deathText != null)
         {
             deathText.text = "Deaths: " + deathCount.ToString();
