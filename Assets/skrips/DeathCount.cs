@@ -1,12 +1,12 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class DeathCounter : MonoBehaviour
 {
     public static DeathCounter Instance;
     public int deathCount = 0;
-    public TMP_Text deathText; // Assign in the inspector if you want UI
+    public TMP_Text deathText;
 
     void Awake()
     {
@@ -33,17 +33,27 @@ public class DeathCounter : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Reset deaths only for scenes that start with "Level"
-        if (scene.name.StartsWith("Level"))
+        if (deathText == null)
         {
-            ResetDeaths();
+            // Try to find the new TextMeshProUGUI by Tag
+            GameObject deathTextObj = GameObject.FindWithTag("DeathText");
+
+            if (deathTextObj != null)
+            {
+                deathText = deathTextObj.GetComponent<TMP_Text>();
+            }
+        }
+
+        // Update the UI immediately after reloading
+        if (deathText != null)
+        {
+            deathText.text = "Deaths: " + deathCount.ToString();
         }
     }
 
     public void AddDeath()
     {
         deathCount++;
-
         Debug.Log("Deaths: " + deathCount);
 
         if (deathText != null)

@@ -17,6 +17,7 @@ public class PlayerRespawn : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         defaultRespawn = respawnPoint.position;
+
     }
 
     public void Respawn()
@@ -24,8 +25,9 @@ public class PlayerRespawn : MonoBehaviour
         DeathCounter.Instance.AddDeath(); // Increase death counter
 
         // Reload the current scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
+       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+   //     transform.position = respawnPoint.position;
+     //   camMover.MoveToPoint(respawnCameraIndex);
         // Timer and DeathCounter will survive because of DontDestroyOnLoad (make sure you have that)
     }
 
