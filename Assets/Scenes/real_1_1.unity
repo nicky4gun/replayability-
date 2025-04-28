@@ -2744,6 +2744,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 343539728}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &298987487 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4510300320004907834, guid: 5863b553d64e7424a870e3b6063181bb, type: 3}
+  m_PrefabInstance: {fileID: 1770530672}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &304406944
 GameObject:
   m_ObjectHideFlags: 0
@@ -8736,7 +8741,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &901867429
 Transform:
   m_ObjectHideFlags: 0
@@ -15095,6 +15100,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 52503882294124107, guid: 3ffcbdf6947599241ab52326632f2011, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 298987487}
     - target: {fileID: 52503882294124107, guid: 3ffcbdf6947599241ab52326632f2011, type: 3}
       propertyPath: cameraPoints.Array.size
       value: 21
