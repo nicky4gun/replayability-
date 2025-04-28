@@ -31,24 +31,31 @@ public class CameraMover : MonoBehaviour
             // If not locked, follow the player freely with offset
             transform.position = Vector3.SmoothDamp(transform.position, player.position + offset, ref velocity, smoothTime);
         }
+
+        // Check for a toggle button press to switch between room-based and free movement
+        if (Input.GetKeyDown(KeyCode.T)) // Change KeyCode.T to any key you prefer
+        {
+            ToggleCameraMode();
+        }
     }
 
+    // Move camera to a specific point
     public void MoveToPoint(int index)
     {
-        // Move camera to the specified point (based on index)
         if (index >= 0 && index < cameraPoints.Length)
         {
             targetPosition = cameraPoints[index].position + offset;
         }
     }
 
-    public void SetFreeMovement(bool isFree)
+    // Toggle between room-based movement and free movement
+    public void ToggleCameraMode()
     {
-        // Toggle between free movement and room-based movement
-        isCameraLocked = !isFree;  // If isFree is true, camera will be unlocked
+        isCameraLocked = !isCameraLocked; // Toggle between locked and free movement
+        Debug.Log("Camera mode toggled. Locked: " + isCameraLocked);
     }
 
-    // Optionally, you could add a method to update camera points dynamically
+    // Optional: Add more camera points dynamically if needed
     public void AddCameraPoint(Transform newPoint)
     {
         System.Array.Resize(ref cameraPoints, cameraPoints.Length + 1);

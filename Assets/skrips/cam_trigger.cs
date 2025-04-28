@@ -1,40 +1,57 @@
 using UnityEngine;
 
-public class CameraTrigger : MonoBehaviour
+public class CameraMover : MonoBehaviour
 {
-    public CameraMover camMover;
-    [SerializeField] private bool isReversed = false; // For reverse movement logic
-    public int forwardIndex = 0;
-    public int backwardIndex = 0;
+    public Transform[] cameraPoints;  // Array of camera points (for room transitions)
+    public float smoothTime = 0.3f;   // Smooth transition time
+    public Vector3 offset;            // Camera offset
+    public Transform player;          // Reference to the player
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private Vector3 velocity = Vector3.zero;
+    private Vector3 targetPosition;
+    private bool isCameraLocked = true;  // Is the camera locked to a point?
+
+    void Start()
     {
-        if (other.CompareTag("Player"))
+        if (cameraPoints.Length > 0)
         {
-            Debug.Log("Player triggered collider");
-
-            // Check if the player is moving forward or backward
-            Rigidbody2D playerRb = other.GetComponent<Rigidbody2D>();
-            bool movingForward = playerRb.linearVelocity.x > 0;  // Moving right
-            bool movingBackward = playerRb.linearVelocity.x < 0; // Moving left
-
-            // Lock the camera to a point based on movement direction
-            if (movingForward)
-            {
-                camMover.MoveToPoint(forwardIndex); // Move camera forward
-                camMover.SetFreeMovement(false);    // Lock camera to room
-            }
-            else if (movingBackward)
-            {
-                camMover.MoveToPoint(backwardIndex); // Move camera backward
-                camMover.SetFreeMovement(false);     // Lock camera to room
-            }
+            targetPosition = cameraPoints[0].position + offset;  // Start at the first camera point
         }
     }
 
-    // Call this to switch to free movement when the player is outside of rooms
-    public void EnableFreeMovement()
+    void Update()
     {
-        camMover.SetFreeMovement(true); // Allow the camera to follow the player freely
+        // If the camera is locked to a room, move smoothly to the target position
+        if (isCameraLocked)
+        {
+            // Only move the camera to the locked position (no following the player)
+            transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+        }
+        else
+        {
+            // If not locked, follow the player freely with offset
+            transform.position = Vector3.SmoothDamp(transform.position, player.position + offset, ref velocity, smoothTime);
+        }
     }
-}
+
+    // Move camera to a specific point
+    public void MoveToPoint(int index)
+    {
+        if (index >= 0 && index < cameraPoints.Length)
+        {
+            targetPosition = cameraPoints[index].position + offset;
+        }
+    }
+
+    // Toggle between room-based movement and free movement
+    public void SetFreeMovement(bool isFree)
+    {
+        isCameraLocked = !isFree; // Toggle between locked and free movement
+        Debug.Log("Camera mode toggled. Locked: " + isCameraLocked);
+    }
+
+    // Optional: Add more camera points dynamically if needed
+    public void AddCameraPoint(Transform newPoint)
+    {
+        System.Array.Resize(ref cameraPoints, cameraPoints.Length + 1);
+        cameraPoints[camera
