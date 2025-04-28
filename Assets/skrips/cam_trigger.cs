@@ -1,57 +1,29 @@
 using UnityEngine;
 
-public class CameraMover : MonoBehaviour
+public class CameraTrigger : MonoBehaviour
 {
-    public Transform[] cameraPoints;  // Array of camera points (for room transitions)
-    public float smoothTime = 0.3f;   // Smooth transition time
-    public Vector3 offset;            // Camera offset
-    public Transform player;          // Reference to the player
+    public CameraMover camMover;
+    [SerializeField] private bool isReversed = false;  // Whether the camera moves forward or backward
+    public int forwardIndex = 0;
+    public int backwardIndex = 0;
 
-    private Vector3 velocity = Vector3.zero;
-    private Vector3 targetPosition;
-    private bool isCameraLocked = true;  // Is the camera locked to a point?
-
-    void Start()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (cameraPoints.Length > 0)
+        if (other.CompareTag("Player"))
         {
-            targetPosition = cameraPoints[0].position + offset;  // Start at the first camera point
+            // Switch to free mode when the player enters this trigger area
+            camMover.SetFreeMovement(true);  // Start free movement
+
+            bool movingForward = other.transform.localScale.x > 0;  // Check if player is moving right
+
+            if (movingForward)
+            {
+                camMover.MoveToPoint(forwardIndex);  // Move to the forward camera point
+            }
+            else
+            {
+                camMover.MoveToPoint(backwardIndex);  // Move to the backward camera point
+            }
         }
     }
-
-    void Update()
-    {
-        // If the camera is locked to a room, move smoothly to the target position
-        if (isCameraLocked)
-        {
-            // Only move the camera to the locked position (no following the player)
-            transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
-        }
-        else
-        {
-            // If not locked, follow the player freely with offset
-            transform.position = Vector3.SmoothDamp(transform.position, player.position + offset, ref velocity, smoothTime);
-        }
-    }
-
-    // Move camera to a specific point
-    public void MoveToPoint(int index)
-    {
-        if (index >= 0 && index < cameraPoints.Length)
-        {
-            targetPosition = cameraPoints[index].position + offset;
-        }
-    }
-
-    // Toggle between room-based movement and free movement
-    public void SetFreeMovement(bool isFree)
-    {
-        isCameraLocked = !isFree; // Toggle between locked and free movement
-        Debug.Log("Camera mode toggled. Locked: " + isCameraLocked);
-    }
-
-    // Optional: Add more camera points dynamically if needed
-    public void AddCameraPoint(Transform newPoint)
-    {
-        System.Array.Resize(ref cameraPoints, cameraPoints.Length + 1);
-        cameraPoints[camera
+}
