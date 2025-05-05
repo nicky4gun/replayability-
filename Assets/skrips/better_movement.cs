@@ -52,6 +52,7 @@ public class PlatformControllerAdv : MonoBehaviour
     [SerializeField] float dashingTime = 0.2f;
     [SerializeField] float dashingCooldown = 1f;
 
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -115,6 +116,7 @@ public class PlatformControllerAdv : MonoBehaviour
         rb.linearVelocity = new Vector2(inputX * speed, rb.linearVelocity.y);
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        anim.SetBool("grounded", isGrounded);
         if (rb.linearVelocity.y < 0f)
         {
             rb.linearVelocity += Vector2.up * (Physics2D.gravity.y * 1.5f * Time.fixedDeltaTime);
@@ -144,6 +146,7 @@ public class PlatformControllerAdv : MonoBehaviour
         if (jumpBufferCounter > 0f && coyoteTimeLeft > 0f)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            anim.SetTrigger("jump");
             isJumping = true;
             jumpTimeLeft = jumpTime;
             coyoteTimeLeft = 0;
