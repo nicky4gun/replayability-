@@ -1,61 +1,67 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class DeathCounter : MonoBehaviour
 {
     public static DeathCounter Instance;
-    public int deathCount = 0;
-    public TMP_Text deathText; // Assign in the inspector if you want UI
+    public static int deathCount = 0;
+    public TMP_Text deathText; // UI Text to display death count
+
+    public TMP_Text timer;
+    public static int time = 0;
 
     void Awake()
     {
+        // Ensure only one instance of DeathCounter exists
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject); // Prevent this object from being destroyed on scene load
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(gameObject); // If another instance exists, destroy this one
         }
     }
 
-    void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        // Reset deaths only for scenes that start with "Level"
-        if (scene.name.StartsWith("Level"))
+    void Start()
+    {/*
+        // Try to find the DeathText if it's not assigned
+        if (deathText == null)
         {
-            ResetDeaths();
+            GameObject foundText = GameObject.Find("Death Text");
+            if (foundText != null)
+            {
+                deathText = foundText.GetComponent<TMP_Text>();
+            }
         }
+        if (timer == null)
+        {
+            GameObject foundTextTimer = GameObject.Find("TimerTxt");
+            if (foundTextTimer != null)
+            {
+                timer = foundTextTimer.GetComponent<TMP_Text>();
+            }
+        }*/
+        UpdateUI();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        time = (int)Time.time;
+        timer.text = time.ToString();
     }
 
     public void AddDeath()
     {
         deathCount++;
-
-        Debug.Log("Deaths: " + deathCount);
-
-        if (deathText != null)
-        {
-            deathText.text = "Deaths: " + deathCount.ToString();
-        }
+        UpdateUI();
     }
 
-    public void ResetDeaths()
+    private void UpdateUI()
     {
-        deathCount = 0;
-
         if (deathText != null)
         {
             deathText.text = "Deaths: " + deathCount.ToString();

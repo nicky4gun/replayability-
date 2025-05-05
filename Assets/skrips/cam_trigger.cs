@@ -3,56 +3,27 @@ using UnityEngine;
 public class CameraTrigger : MonoBehaviour
 {
     public CameraMover camMover;
-    [SerializeField] private bool isReversed = false;
+    [SerializeField] private bool isReversed = false;  // Whether the camera moves forward or backward
     public int forwardIndex = 0;
     public int backwardIndex = 0;
-
-    private Vector2 lastPlayerPosition;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player triggered collider");
-            bool movingForward = other.transform.localScale.x > 0;
+            // Switch to free mode when the player enters this trigger area
+            camMover.SetFreeMovement(true);  // Start free movement
+
+            bool movingForward = other.transform.localScale.x > 0;  // Check if player is moving right
 
             if (movingForward)
             {
-                camMover.MoveToPoint(forwardIndex);
+                camMover.MoveToPoint(forwardIndex);  // Move to the forward camera point
             }
             else
             {
-                camMover.MoveToPoint(backwardIndex);
+                camMover.MoveToPoint(backwardIndex);  // Move to the backward camera point
             }
-
-            /*
-            Transform player = other.transform;
-            Vector2 playerDirection = (Vector2)player.position - lastPlayerPosition;
-            bool movingForward = !isReversed
-                ? (playerDirection.x < 0 || playerDirection.y > 0)
-                : (playerDirection.x > 0 || playerDirection.y < 0);
-
-            bool movingBackward = !isReversed
-                ? (playerDirection.x > 0 || playerDirection.y < 0)
-                : (playerDirection.x < 0 || playerDirection.y > 0);
-            if (movingForward)
-            {
-                camMover.MoveToPoint(forwardIndex);
-            }
-            else if (movingBackward)
-            {
-                camMover.MoveToPoint(backwardIndex);
-            }
-            
-            lastPlayerPosition = player.position;
-            */
-
         }
-    }
-
-    //  Call this from PlayerRespawn to reset trigger logic
-    public void ResetPlayerTracking(Vector2 newPosition)
-    {
-        lastPlayerPosition = newPosition;
     }
 }

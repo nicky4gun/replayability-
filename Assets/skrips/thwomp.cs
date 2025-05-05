@@ -6,12 +6,13 @@ public class Thwomp : MonoBehaviour
     public float dropSpeed = 10f;
     public float riseSpeed = 5f;
     public float waitTime = 1f;
-    public float killVelocityThreshold = 5f;
+    public float killVelocityThreshold = 10f;
 
     private Vector2 startPosition;
     private Rigidbody2D rb;
     private bool isFalling = false;
-
+    public Vector2 moveDirection = Vector2.down;
+    public float gravityScale = 1f;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -24,18 +25,20 @@ public class Thwomp : MonoBehaviour
     {
         if (!isFalling && other.CompareTag("Player"))
         {
+            Debug.Log("hit trigger");
             isFalling = true;
-            rb.gravityScale = 1; // Turn on gravity to drop
-            rb.linearVelocity = Vector2.down * dropSpeed;
+            rb.gravityScale = gravityScale; // Turn on gravity to drop
+            //rb.AddForce(moveDirection*dropSpeed,ForceMode2D.Impulse);
+            rb.linearVelocity = moveDirection * dropSpeed;
         }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         // Crush the player if falling fast
-        if (collision.gameObject.CompareTag("Player") && rb.linearVelocity.y <= -killVelocityThreshold)
+        if (collision.gameObject.CompareTag("Player") && collision.relativeVelocity.magnitude >= killVelocityThreshold)
         {
-            Debug.Log("Player crushed!");
+            Debug.Log("Player crushed! " + collision.relativeVelocity.magnitude);
             PlayerRespawn respawn = collision.gameObject.GetComponent<PlayerRespawn>();
             if (respawn != null)
             {

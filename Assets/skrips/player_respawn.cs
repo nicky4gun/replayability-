@@ -1,14 +1,15 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerRespawn : MonoBehaviour
 {
     [Header("Respawn Settings")]
-    public Transform respawnPoint; // Current active checkpoint
+    public Transform respawnPoint;
     private Vector3 defaultRespawn;
 
     [Header("References")]
-    public CameraMover camMover; // Camera movement script
-    public int respawnCameraIndex = 0; // Camera index to reset to
+    public CameraMover camMover;
+    public int respawnCameraIndex = 0;
 
     private Rigidbody2D rb;
 
@@ -16,27 +17,20 @@ public class PlayerRespawn : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         defaultRespawn = respawnPoint.position;
+
     }
 
     public void Respawn()
     {
-        // Move player to the respawn point
-        transform.position = respawnPoint != null ? respawnPoint.position : defaultRespawn;
-        DeathCounter.Instance.AddDeath();
-        // Reset velocity
-        if (rb != null)
-            rb.linearVelocity = Vector2.zero;
+        DeathCounter.Instance.AddDeath(); // Increase death counter
 
-        // Reset camera position if available
-        if (camMover != null)
-        {
-            camMover.MoveToPoint(respawnCameraIndex); // Move camera to specific point
-        }
-
-        Debug.Log("Player respawned!");
+        // Reload the current scene
+       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+   //     transform.position = respawnPoint.position;
+     //   camMover.MoveToPoint(respawnCameraIndex);
+        // Timer and DeathCounter will survive because of DontDestroyOnLoad (make sure you have that)
     }
 
-    // Optional: Allows updating the respawn point externally (e.g., by a checkpoint)
     public void SetRespawnPoint(Transform newPoint, int newCameraIndex)
     {
         respawnPoint = newPoint;
