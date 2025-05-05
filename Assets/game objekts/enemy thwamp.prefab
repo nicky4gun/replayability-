@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7013841720239797095}
   - component: {fileID: 7250321986703660370}
-  - component: {fileID: 897408327729158396}
   - component: {fileID: 487865039646534820}
   - component: {fileID: 2256288261740566741}
+  - component: {fileID: 5483350539887824817}
   m_Layer: 3
   m_Name: enemy thwamp
   m_TagString: Untagged
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.21, y: 8.18, z: 0}
-  m_LocalScale: {x: 1.6394459, y: 1.1756017, z: 1}
+  m_LocalScale: {x: 1.8010954, y: 0.97206146, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8636543120634064043}
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d886ba9ea1c0747f48bd6188b513f837, type: 3}
-  m_Color: {r: 1, g: 0.80730385, b: 0.41960788, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -91,33 +91,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &897408327729158396
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 958024416868217852}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1000000
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 5
 --- !u!61 &487865039646534820
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -152,7 +125,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.007349938, y: 0.040851474}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -162,7 +135,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.6, y: 1.6}
+  m_Size: {x: 0.9091709, y: 1.518297}
   m_EdgeRadius: 0
 --- !u!114 &2256288261740566741
 MonoBehaviour:
@@ -182,6 +155,33 @@ MonoBehaviour:
   killVelocityThreshold: 5
   moveDirection: {x: 0, y: -1}
   gravityScale: 1
+--- !u!50 &5483350539887824817
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958024416868217852}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 100000
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1184809425272423619
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,8 +208,8 @@ Transform:
   m_GameObject: {fileID: 1184809425272423619}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.11, y: -2.52, z: 0.098145105}
-  m_LocalScale: {x: 1.6, y: 10.61424, z: 1}
+  m_LocalPosition: {x: 0.03, y: -3.45, z: 0.098145105}
+  m_LocalScale: {x: 1.32, y: 5.6244, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7013841720239797095}
