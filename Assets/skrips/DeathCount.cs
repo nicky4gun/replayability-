@@ -17,7 +17,7 @@ public class DeathCounter : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Prevent this object from being destroyed on scene load
+            DontDestroyOnLoad(gameObject); 
         }
         else
         {

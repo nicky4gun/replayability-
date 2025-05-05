@@ -225,10 +225,12 @@ public class PlatformControllerAdv : MonoBehaviour
         isDashing = true;
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0;
+        anim.SetBool("Dash", true);
         rb.linearVelocity = new Vector2(transform.localScale.x * dashingPower, 0f);
         yield return new WaitForSeconds(dashingTime);
         rb.gravityScale = originalGravity;
         isDashing = false;
+        anim.SetBool("Dash", false);
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
     }
