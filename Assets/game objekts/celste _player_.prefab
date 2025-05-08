@@ -206,7 +206,7 @@ MonoBehaviour:
   wallCheckRadius: {x: 0.2, y: 1.6}
   wallJumpingPower: {x: 1, y: 8}
   isDashing: 0
-  dashingPower: 2
+  dashingPower: 5
   dashingTime: 0.2
   dashingCooldown: 1
 --- !u!95 &9087344059147598575
