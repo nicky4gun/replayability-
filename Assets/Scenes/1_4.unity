@@ -3016,6 +3016,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: celste _player_
       objectReference: {fileID: 0}
+    - target: {fileID: 2254395152940180309, guid: 5863b553d64e7424a870e3b6063181bb, type: 3}
+      propertyPath: dashingPower
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4510300320004907834, guid: 5863b553d64e7424a870e3b6063181bb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.53
