@@ -2166,6 +2166,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: enemy thwamp (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2256288261740566741, guid: 043bc5487f838e7478a58f94c553b28b, type: 3}
+      propertyPath: killVelocityThreshold
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7013841720239797095, guid: 043bc5487f838e7478a58f94c553b28b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.55
@@ -2255,6 +2259,10 @@ PrefabInstance:
     - target: {fileID: 958024416868217852, guid: 043bc5487f838e7478a58f94c553b28b, type: 3}
       propertyPath: m_Name
       value: enemy thwamp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2256288261740566741, guid: 043bc5487f838e7478a58f94c553b28b, type: 3}
+      propertyPath: killVelocityThreshold
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7013841720239797095, guid: 043bc5487f838e7478a58f94c553b28b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5907,6 +5915,10 @@ PrefabInstance:
     - target: {fileID: 958024416868217852, guid: 043bc5487f838e7478a58f94c553b28b, type: 3}
       propertyPath: m_Name
       value: enemy thwamp (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2256288261740566741, guid: 043bc5487f838e7478a58f94c553b28b, type: 3}
+      propertyPath: killVelocityThreshold
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7013841720239797095, guid: 043bc5487f838e7478a58f94c553b28b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10721,11 +10733,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 222023297859964081, guid: 3ffcbdf6947599241ab52326632f2011, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 27.16
+      value: -11.68
       objectReference: {fileID: 0}
     - target: {fileID: 222023297859964081, guid: 3ffcbdf6947599241ab52326632f2011, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.72
+      value: 2.32
       objectReference: {fileID: 0}
     - target: {fileID: 222023297859964081, guid: 3ffcbdf6947599241ab52326632f2011, type: 3}
       propertyPath: m_LocalPosition.z
