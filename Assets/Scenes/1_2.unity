@@ -11605,7 +11605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6fd4a066f3cc994cbac433cf2ef7c0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraIndex: 0
+  cameraIndex: 5
 --- !u!1 &754488925
 GameObject:
   m_ObjectHideFlags: 0
@@ -23555,6 +23555,10 @@ PrefabInstance:
     - target: {fileID: 426077239315926780, guid: e5ebb667b84b4794f91415279c891b70, type: 3}
       propertyPath: m_Name
       value: time,death and money
+      objectReference: {fileID: 0}
+    - target: {fileID: 426077239315926780, guid: e5ebb667b84b4794f91415279c891b70, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2077664719165284875, guid: e5ebb667b84b4794f91415279c891b70, type: 3}
       propertyPath: m_LocalPosition.x
