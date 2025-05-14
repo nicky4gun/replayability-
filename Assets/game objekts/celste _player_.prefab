@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6148367938341767877}
   - component: {fileID: 2254395152940180309}
   - component: {fileID: 9087344059147598575}
+  - component: {fileID: 4420445060069141537}
   m_Layer: 0
   m_Name: celste _player_
   m_TagString: Player
@@ -192,7 +193,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   isGrounded: 0
-  jumpForce: 5
+  jumpForce: 6
   jumpTime: 0.5
   coyoteTime: 0.2
   jumpBufferTime: 0.2
@@ -231,6 +232,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4420445060069141537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250031512900193646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30c7ab0efb2dc22499bff41165e3a7f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1576615912475224768
 GameObject:
   m_ObjectHideFlags: 0
