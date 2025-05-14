@@ -2767,8 +2767,12 @@ PrefabInstance:
       value: enemy thwamp (2)
       objectReference: {fileID: 0}
     - target: {fileID: 2256288261740566741, guid: 043bc5487f838e7478a58f94c553b28b, type: 3}
+      propertyPath: dropSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2256288261740566741, guid: 043bc5487f838e7478a58f94c553b28b, type: 3}
       propertyPath: killVelocityThreshold
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5483350539887824817, guid: 043bc5487f838e7478a58f94c553b28b, type: 3}
       propertyPath: m_Constraints
@@ -7205,8 +7209,12 @@ PrefabInstance:
       value: enemy thwamp (1)
       objectReference: {fileID: 0}
     - target: {fileID: 2256288261740566741, guid: 043bc5487f838e7478a58f94c553b28b, type: 3}
+      propertyPath: dropSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2256288261740566741, guid: 043bc5487f838e7478a58f94c553b28b, type: 3}
       propertyPath: killVelocityThreshold
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5483350539887824817, guid: 043bc5487f838e7478a58f94c553b28b, type: 3}
       propertyPath: m_Constraints
