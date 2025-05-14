@@ -31054,6 +31054,10 @@ PrefabInstance:
       propertyPath: respawnPoint
       value: 
       objectReference: {fileID: 1441046513}
+    - target: {fileID: 6148367938341767877, guid: 5863b553d64e7424a870e3b6063181bb, type: 3}
+      propertyPath: respawnCameraIndex
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

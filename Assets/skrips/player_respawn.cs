@@ -13,22 +13,37 @@ public class PlayerRespawn : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    // STATIC variables will remember values after scene reload
+    public static Vector3 savedRespawnPos;
+    public static int savedCameraIndex;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        defaultRespawn = respawnPoint.position;
 
+        // If savedRespawnPos is not empty, use it
+        if (savedRespawnPos != Vector3.zero)
+        {
+            transform.position = savedRespawnPos;
+
+            if (camMover != null)
+                camMover.MoveToPoint(savedCameraIndex);
+        }
+        else if (respawnPoint != null)
+        {
+            transform.position = respawnPoint.position;
+        }
     }
 
     public void Respawn()
     {
-        DeathCounter.Instance.AddDeath(); // Increase death counter
+        DeathCounter.Instance.AddDeath();
 
-        // Reload the current scene
-       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-   //     transform.position = respawnPoint.position;
-     //   camMover.MoveToPoint(respawnCameraIndex);
-        // Timer and DeathCounter will survive because of DontDestroyOnLoad (make sure you have that)
+        // Save respawn position BEFORE reloading the scene
+        savedRespawnPos = respawnPoint.position;
+        savedCameraIndex = respawnCameraIndex;
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void SetRespawnPoint(Transform newPoint, int newCameraIndex)
