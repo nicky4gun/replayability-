@@ -14,7 +14,7 @@ public class PlayerRespawn : MonoBehaviour
     private Rigidbody2D rb;
 
     // STATIC variables will remember values after scene reload
-    public static Vector3 savedRespawnPos;
+    public static Vector3 savedRespawnPos = Vector3.zero;
     public static int savedCameraIndex;
 
     void Start()
