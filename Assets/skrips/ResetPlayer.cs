@@ -14,6 +14,8 @@ public class ResetPlayer : MonoBehaviour
         if (spawnPoint != null && other.CompareTag("Player"))
         {
             other.transform.position = spawnPoint.position;
+            other.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
+
         }
     }
 }
