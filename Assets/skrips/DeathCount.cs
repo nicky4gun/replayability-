@@ -17,7 +17,7 @@ public class DeathCounter : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); 
+            DontDestroyOnLoad(this); 
         }
         else
         {
