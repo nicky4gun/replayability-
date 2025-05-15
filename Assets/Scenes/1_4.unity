@@ -15328,8 +15328,12 @@ PrefabInstance:
       value: StartRespawnFixBox
       objectReference: {fileID: 0}
     - target: {fileID: 6311255448627288978, guid: 8daeef60ccd6684458b39d24c685a61e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 300.48874
+      objectReference: {fileID: 0}
+    - target: {fileID: 6311255448627288978, guid: 8daeef60ccd6684458b39d24c685a61e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 70.5
+      value: 7.5473
       objectReference: {fileID: 0}
     - target: {fileID: 6311255448627288978, guid: 8daeef60ccd6684458b39d24c685a61e, type: 3}
       propertyPath: m_LocalPosition.y
